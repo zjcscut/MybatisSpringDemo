@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjc.dao.AddressDAO">
+
+    <resultMap id="BaseResultMap" type="cn.zjc.entity.Address">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="u_id" property="uId" jdbcType="INTEGER"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findByUserId" resultType="Address">
+        SELECT
+            a.id,
+            a.detail
+        FROM address a, user u
+        WHERE u.id = a.u_id AND u.id = #{id}
+    </select>
+
+</mapper>
