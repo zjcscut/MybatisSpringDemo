@@ -55,7 +55,7 @@ public class TestCode extends BaseSpringTestCase {
         List<User> user = userDAO.selectByExample(example);
 //        System.out.println(JsonUtil.toJson(new PageInfo<>(user)));
         System.out.println(JsonUtil.toJson(new PageBean<>(user)));
-//        System.out.println(JsonUtil.toJson(userService.findUserByPhone("15118850470")));
+//        System.out.println(JsonUtil.toJson(userService.findUserByPhone("123456789111")));
     }
 
 
