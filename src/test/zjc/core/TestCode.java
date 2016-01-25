@@ -49,7 +49,7 @@ public class TestCode extends BaseSpringTestCase {
         PageHelper.startPage(1, 2);
         List<User> user = userDAO.selectByExample(example);
         System.out.println(JsonUtil.toJson(user));
-        System.out.println(JsonUtil.toJson(userService.findUserByPhone("15118850470")));
+        System.out.println(JsonUtil.toJson(userService.findUserByPhone("22222222")));
     }
 
 
