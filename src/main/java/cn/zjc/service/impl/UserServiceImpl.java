@@ -20,7 +20,7 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public List<User> findUserByPhone(String phone) {
-        PageHelper.start(1,2);
+        PageHelper.startPage(1,2);
         List<User> list = userDAO.findByPhone(phone);
         return list;
     }
