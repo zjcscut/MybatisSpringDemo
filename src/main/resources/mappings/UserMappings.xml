@@ -19,9 +19,36 @@
     </select>
 
     <select id="findByMap" resultMap="BaseResultMap">
-        SELECT name,phone
+        SELECT
+            name,
+            phone
         FROM user
         WHERE id = #{id}
+    </select>
+
+
+    <resultMap id="combineMap" type="cn.zjc.entity.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="bitrh" property="birth" javaType="java.util.Date"/>
+        <!--collection内id记得配置别名，否则会多字段名称重复会出现只查出一条结果的可能-->
+        <collection property="address" javaType="list" ofType="cn.zjc.entity.Address">
+            <id column="a_id" property="id" jdbcType="INTEGER"/>
+            <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUserAndAddress" resultMap="combineMap">
+        SELECT
+            a.id a_id,
+            a.detail,
+            u.id,
+            u.name,
+            u.phone,
+            u.birth
+        FROM user u, address a
+        WHERE u.id = a.u_id AND u.name = #{name}
     </select>
 
 </mapper>

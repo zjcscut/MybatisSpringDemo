@@ -66,7 +66,7 @@ public class TestCode extends BaseSpringTestCase {
 
     @Test
     public void TestAddress() {
-        Address ls = addressDAO.findByUserId(100);
+        List<User> ls = userDAO.findByPhone("12345678910");
         System.out.println(JsonUtil.toJson(ls));
     }
 
@@ -86,18 +86,16 @@ public class TestCode extends BaseSpringTestCase {
     }
 
     @Test
-    public void TestJson(){
-        Map<String , Object> map = new HashMap<>();
-        map.put("zjc","");
-        map.put("zzzz",null);
-        map.put("sss",222);
+    public void TestJson() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("zjc", "");
+        map.put("zzzz", null);
+        map.put("sss", 222);
         System.out.println(JsonUtil.toJson(map));
     }
 
     @Test
-    public void TestTransation(){
-        for (int i = 0;i<10;i++){
-
-        }
+    public void TestTransation() {
+        System.out.println(JsonUtil.toJson(userDAO.findUserAndAddress("zjc")));
     }
 }

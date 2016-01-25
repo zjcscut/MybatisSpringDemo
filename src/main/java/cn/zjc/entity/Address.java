@@ -1,13 +1,13 @@
 package cn.zjc.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zjc on 2016/1/24.
  */
+@Entity
 @Table(name="address")
 public class Address implements java.io.Serializable {
 
@@ -19,6 +19,7 @@ public class Address implements java.io.Serializable {
     @Column
     private Integer uId;
     private String detail;
+
 
     public Integer getId() {
         return id;

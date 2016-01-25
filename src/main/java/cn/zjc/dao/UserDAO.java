@@ -16,4 +16,6 @@ public interface UserDAO extends BaseQueryMapper<User> {
     List<User> findByPhone(String phone);
 
     List<User> findByMap(int id);
+
+    List<User> findUserAndAddress(String name);
 }

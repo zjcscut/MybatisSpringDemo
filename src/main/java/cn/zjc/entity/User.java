@@ -1,11 +1,12 @@
 package cn.zjc.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * created by IntelliJ IDEA
@@ -13,6 +14,7 @@ import java.util.Date;
  * @author zjc
  * @time 2016/1/19-14:03
  */
+@Entity
 @Table(name = "user")
 public class User implements java.io.Serializable {
 
@@ -25,6 +27,8 @@ public class User implements java.io.Serializable {
     private String phone;
     private Date birth;
 
+    @Transient
+    private List<Address> address;
 
     public User() {
     }
@@ -68,4 +72,11 @@ public class User implements java.io.Serializable {
         this.birth = birth;
     }
 
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
 }
