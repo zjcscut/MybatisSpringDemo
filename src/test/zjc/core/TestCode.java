@@ -6,7 +6,10 @@ import cn.zjc.entity.Address;
 import cn.zjc.entity.User;
 import cn.zjc.service.UserService;
 import cn.zjc.util.JsonUtil;
+import cn.zjc.util.PageBean;
+import cn.zjc.util.PaginationContext;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
@@ -46,10 +49,13 @@ public class TestCode extends BaseSpringTestCase {
     public void selectByID() {
         Example example = new Example(User.class);
         example.createCriteria().andGreaterThanOrEqualTo("id", 0);
-        PageHelper.startPage(1, 2);
+        Integer pageNum = 1;
+        Integer pageSize = 2;
+        PageHelper.startPage(pageNum, pageSize);
         List<User> user = userDAO.selectByExample(example);
-        System.out.println(JsonUtil.toJson(user));
-        System.out.println(JsonUtil.toJson(userService.findUserByPhone("22222222")));
+//        System.out.println(JsonUtil.toJson(new PageInfo<>(user)));
+        System.out.println(JsonUtil.toJson(new PageBean<>(user)));
+//        System.out.println(JsonUtil.toJson(userService.findUserByPhone("15118850470")));
     }
 
 
@@ -86,5 +92,12 @@ public class TestCode extends BaseSpringTestCase {
         map.put("zzzz",null);
         map.put("sss",222);
         System.out.println(JsonUtil.toJson(map));
+    }
+
+    @Test
+    public void TestTransation(){
+        for (int i = 0;i<10;i++){
+
+        }
     }
 }

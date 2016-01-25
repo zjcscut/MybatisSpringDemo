@@ -54,6 +54,8 @@
         <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}"/>
         <property name="maxPoolPreparedStatementPerConnectionSize"
                   value="${druid.maxPoolPreparedStatementPerConnectionSize}"/>
+
+        <!--统计和监控-->
         <!--属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：
                 监控统计用的filter:stat
                 日志用的filter:log4j
@@ -112,11 +114,18 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
     </aop:config>
 
+    <!--事务处理,出现错误时候回滚-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="select*" read-only="true"/>
             <tx:method name="find*" read-only="true"/>
             <tx:method name="get*" read-only="true"/>
+            <tx:method name="save*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
             <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
