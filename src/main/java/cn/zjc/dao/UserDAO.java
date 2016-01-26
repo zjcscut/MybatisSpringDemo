@@ -5,6 +5,7 @@ import cn.zjc.mapper.BaseQueryMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zjc.
@@ -18,4 +19,6 @@ public interface UserDAO extends BaseQueryMapper<User> {
     List<User> findByMap(int id);
 
     List<User> findUserAndAddress(String name);
+
+    List<User> findByTest(Map<String,Object> params);
 }

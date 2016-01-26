@@ -51,4 +51,19 @@
         WHERE u.id = a.u_id AND u.name = #{name}
     </select>
 
+    <select id="findByTest" parameterType="hashmap" resultType="User">
+        SELECT * FROM user u
+        <where>
+            <if test="id != null">
+                u.id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and u.name =#{name}
+            </if>
+            <if test="phone != null and phone != ''">
+                and u.phone =#{phone}
+            </if>
+        </where>
+    </select>
+
 </mapper>

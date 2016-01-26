@@ -98,4 +98,11 @@ public class TestCode extends BaseSpringTestCase {
     public void TestTransation() {
         System.out.println(JsonUtil.toJson(userDAO.findUserAndAddress("zjc")));
     }
+
+    @Test
+    public void Testffff() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 1);
+        System.out.println(JsonUtil.toJson(userDAO.findByTest(map)));
+    }
 }
